@@ -1,1 +1,26 @@
-[{"Amount":135,"Category":"Mat","Description":"Lunch p\u00E5 Moccadeli","Date":"2026-01-02T13:38:06.05247+01:00"},{"Amount":9200,"Category":"Boende","Description":"Hyra Januari","Date":"2026-01-04T10:04:57.022441+01:00"},{"Amount":642,"Category":"Transport","Description":"Tanka bilen","Date":"2025-12-22T00:00:00"},{"Amount":76,"Category":"Mat","Description":"Kompletteringshandling","Date":"2026-01-04T16:00:56.567422+01:00"}]
+[
+    {
+        "Amount": 135,
+        "Category": "Mat",
+        "Description": "Lunch p\u00E5 Moccadeli",
+        "Date": "2026-01-02T13:38:06.05247+01:00"
+    },
+    {
+        "Amount": 9200,
+        "Category": "Boende",
+        "Description": "Hyra Januari",
+        "Date": "2026-01-04T10:04:57.022441+01:00"
+    },
+    {
+        "Amount": 642,
+        "Category": "Transport",
+        "Description": "Tanka bilen",
+        "Date": "2025-12-22T00:00:00"
+    },
+    {
+        "Amount": 76,
+        "Category": "Mat",
+        "Description": "Kompletteringshandling",
+        "Date": "2026-01-04T16:00:56.567422+01:00"
+    }
+]
