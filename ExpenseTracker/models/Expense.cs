@@ -13,6 +13,6 @@ namespace ExpenseTracker.Models
         public decimal Amount { get; set;}  //belopp
         public string? Category { get; set;}    //kategori
         public string? Description { get; set;} //beskrivning av utgift
-        public DateTime Date { get; set;}   //datum för utgift
+        public DateTime Date { get; set;} = DateTime.Now;   //datum för utgift med default-datum
     }
 }
