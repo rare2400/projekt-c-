@@ -17,7 +17,7 @@ namespace ExpenseTracker.Services
     //serivce-klass som hanterar utgifter
     public class ExpenseService
     {
-        private string filePath = @"expenses.json"; //filväg där utgifter sparas i JSON-format
+        private readonly string filePath = @"expenses.json"; //filväg där utgifter sparas i JSON-format
 
         private readonly List<Expense> expenses;    //listan med utgifter
 
