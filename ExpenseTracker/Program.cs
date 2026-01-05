@@ -43,7 +43,7 @@ while (true)    //loop för meny
             AddExpense(service);    //lägga till utgift
             break;
         case "2":
-            ShowSortedExpenses(service);    //visa utgifter i sorterad ordning
+            ShowSortedExpenses(service);    //visa utgifter i sorterad ordning efter datum
             break;
         case "3":
             UpdateExpense(service);   //ändra utgift
@@ -119,7 +119,7 @@ void AddExpense(ExpenseService service)
     Console.ResetColor();
 }
 
-//funktion för att visa utgifter i sorterad ordning
+//funktion för att visa utgifter sorterad efter datum, äldsta först
 void ShowSortedExpenses(ExpenseService service)
 {
     List<Expense> expenses = service.GetAllExpenses().OrderBy(e => e.Date).ToList();    //sorterar lista efter datum
