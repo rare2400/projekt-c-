@@ -2,6 +2,8 @@
 Programmering i C#.NET
 Projektuppgift av Ramona Reinholdz
 Konsolapp för att hantera och se sina utgifter
+
+Service-klass för hantering av uppgifter och spara data i en JSON-fil
  */
 
 using System;
@@ -9,7 +11,7 @@ using System.Text.Json;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
-using ExpenseTracker.Models;
+using ExpenseTracker.Models;    //importerar Expense-klassen
 
 namespace ExpenseTracker.Services
 {
@@ -43,7 +45,7 @@ namespace ExpenseTracker.Services
             }
         }
 
-        //lägger till en ny utgift
+        //lägger till en ny utgift med hjälp av objektet i Expense-klassen
         public void AddExpense(Expense expense)
         {
 
@@ -67,13 +69,13 @@ namespace ExpenseTracker.Services
             return expenses.Sum(e => e.Amount); //returnerar den totala summan av utgifter
         }
 
-        //uppdaterar utgift med hjälp av index
+        //uppdaterar utgift med hjälp av index och uppdaterat Expense-objekt
         public bool UpdateExpense(int index, Expense updatedExpense)
         {
             if (index >= 0 && index < expenses.Count)   //kontrollerar att index är giltigt
             {
                 expenses[index] = updatedExpense;
-                SaveToFile(); //sparar utgift i JSON-filen
+                SaveToFile();   //sparar utgift i JSON-filen
                 return true;
             }
             return false;

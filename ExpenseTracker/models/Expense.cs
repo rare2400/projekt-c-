@@ -3,7 +3,7 @@ Programmering i C#.NET
 Projektuppgift av Ramona Reinholdz
 Konsolapp för att hantera och se sina utgifter
 
-Modell för utgift.
+Modell-klass för utgift med datatyper för varje egenskap och setters/getters
  */
 
 namespace ExpenseTracker.Models

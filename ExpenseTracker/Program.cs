@@ -2,6 +2,8 @@
 Programmering i C#.NET
 Projektuppgift av Ramona Reinholdz
 Konsolapp för att hantera och se sina utgifter
+
+Användargränssnitt och menyhantering med funktioner för att lägga till, visa, ändra och ta bort utgifter.
  */
 
 
@@ -66,7 +68,7 @@ while (true)    //loop för meny
     Console.Clear();
 }
 
-//funktion för att lägga till utgift
+//funktion för att lägga till utgift med hjälp av service-klassen
 void AddExpense(ExpenseService service)
 {
     Console.WriteLine("======================== Lägg till utgift ========================");
@@ -112,17 +114,17 @@ void AddExpense(ExpenseService service)
         Date = date
     };
 
-    //lägger till utgiften i listan med service-klassen
-    service.AddExpense(expense);
+    service.AddExpense(expense);   //anropar service-klassen för att lägga till utgift
+
     Console.ForegroundColor = ConsoleColor.DarkGreen;
     Console.WriteLine("Utgift tillagd!\n");
     Console.ResetColor();
 }
 
-//funktion för att visa utgifter sorterad efter datum, äldsta först
+//funktion som med service-klassen visar utgifter sorterat efter datum, äldsta först
 void ShowSortedExpenses(ExpenseService service)
 {
-    List<Expense> expenses = service.GetAllExpenses().OrderBy(e => e.Date).ToList();    //sorterar lista efter datum
+    List<Expense> expenses = service.GetAllExpenses().OrderBy(e => e.Date).ToList();    //sorterar lista efter datum hämtad med service-klassen
 
     if (expenses.Count == 0)    //kontrollerar om listan är tom
     {
@@ -189,7 +191,7 @@ void ShowExpenses(ExpenseService service)
     }
 }
 
-//funktion för att uppdatera utgift
+//funktion för att uppdatera utgift med service-klassen
 void UpdateExpense(ExpenseService service)
 {
     List<Expense> expenses = service.GetAllExpenses();      //hämtar alla utgifter
@@ -271,10 +273,10 @@ void UpdateExpense(ExpenseService service)
     }
 }
 
-//funktion för att ta bort utgift
+//funktion för att ta bort utgift med hjälp av service-klassen
 void RemoveExpense(ExpenseService service)
 {
-    List<Expense> expenses = service.GetAllExpenses();  //hämtar alla utgifter
+    List<Expense> expenses = service.GetAllExpenses();  //hämtar alla utgifter från service-klassen
 
     if (expenses.Count == 0)    //kontrollerar om listan är tom
     {
