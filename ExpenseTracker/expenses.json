@@ -12,7 +12,7 @@
         "Date": "2026-01-04T10:04:57.022441+01:00"
     },
     {
-        "Amount": 642,
+        "Amount": 645,
         "Category": "Transport",
         "Description": "Tanka bilen",
         "Date": "2025-12-22T00:00:00"
@@ -22,5 +22,11 @@
         "Category": "Mat",
         "Description": "Kompletteringshandling",
         "Date": "2026-01-04T16:00:56.567422+01:00"
+    },
+    {
+        "Amount": 962,
+        "Category": "Mat",
+        "Description": "Veckohandling",
+        "Date": "2026-01-06T17:07:14.093338+01:00"
     }
 ]
