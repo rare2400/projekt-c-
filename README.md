@@ -14,6 +14,15 @@ utgifter med en uträknat totalsumma.
 - Services - ExpenseTracker.cs
 - Program.cs
 
+### Expense-klassen - en utgifts struktur
+```C#
+{
+  public decimal Amount { get; set;}
+  public string? Category { get; set;}
+  public string? Description { get; set;}
+  public DateTime Date { get; set;} = DateTime.Now;
+}
+```       
 ## Använd applikationen
 1. Klona repo
 ```bash
