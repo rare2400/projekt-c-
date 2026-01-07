@@ -73,7 +73,7 @@ void AddExpense(ExpenseService service)
 {
     Console.WriteLine("======================== Lägg till utgift ========================");
     Console.Write("Belopp: ");
-    if (!decimal.TryParse(Console.ReadLine(), out decimal amount))  //kontrollerar att input är ett giltigt tal
+    if (!decimal.TryParse(Console.ReadLine(), out decimal amount) || amount <= 0)  //kontrollerar att input är ett giltigt tal
     {
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("Ogiltigt belopp. Utgiften kunde inte läggas till.\n");
@@ -85,8 +85,24 @@ void AddExpense(ExpenseService service)
     Console.Write("Kategori: ");
     string? category = Console.ReadLine();
 
+    if (string.IsNullOrWhiteSpace(category))   //kontrollerar att kategori inte är tom
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Kategori får inte lämnas tom.\n");
+        Console.ResetColor();
+        return;
+    }
+
     Console.Write("Beskrivning: ");
     string? description = Console.ReadLine();
+
+    if (string.IsNullOrWhiteSpace(description))   //kontrollerar att beskrivning inte är tom
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Beskrivning får inte lämnas tom.\n");
+        Console.ResetColor();
+        return;
+    }
 
     Console.Write("Datum (YYYY-MM-DD, lämna tomt för dagens datum): ");
     string? dateInput = Console.ReadLine();
@@ -106,7 +122,7 @@ void AddExpense(ExpenseService service)
     }
 
     //skapar ny utgift att lägga till i listan
-    Expense expense = new Expense
+    Expense expense = new()
     {
         Amount = amount,
         Category = category,
@@ -117,7 +133,7 @@ void AddExpense(ExpenseService service)
     service.AddExpense(expense);   //anropar service-klassen för att lägga till utgift
 
     Console.ForegroundColor = ConsoleColor.DarkGreen;
-    Console.WriteLine("Utgift tillagd!\n");
+    Console.WriteLine("\nUtgift tillagd!\n");
     Console.ResetColor();
 }
 
@@ -250,7 +266,7 @@ void UpdateExpense(ExpenseService service)
     }
 
     //uppdaterar utgift i listan
-    Expense updatedExpense = new Expense
+    Expense updatedExpense = new()
     {
         Amount = amount,
         Category = category,
@@ -304,7 +320,7 @@ void RemoveExpense(ExpenseService service)
     if (service.RemoveExpense(index))
     {
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("\nUtgift är nu borttagen!");
+        Console.WriteLine("\nUtgiften är nu borttagen!");
         Console.ResetColor();
     }
     else
