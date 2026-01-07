@@ -20,13 +20,13 @@ ExpenseService service = new ExpenseService();
 while (true)    //loop för meny
 {
 
-    //display header with title and instructions
-    Console.ForegroundColor = ConsoleColor.DarkBlue;    //header color
+    //header med rubrik och beskrivning i blå och menyval under
+    Console.ForegroundColor = ConsoleColor.DarkBlue;    //header färg
     Console.WriteLine("==============================================================");
     Console.WriteLine("               Välkommen till ExpenseTracker!                 ");
     Console.WriteLine("\n          Här kan du se och hantera dina utgifter, \n          eller varför inte skapa din egen budget?");
     Console.WriteLine("==============================================================\n");
-    Console.ResetColor();   //reset color
+    Console.ResetColor();   //återställer färg
     Console.WriteLine("1. Lägg till utgift");
     Console.WriteLine("2. Visa dina utgifter");
     Console.WriteLine("3. Ändra utgift");
