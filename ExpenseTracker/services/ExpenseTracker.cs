@@ -3,15 +3,14 @@ Programmering i C#.NET
 Projektuppgift av Ramona Reinholdz
 Konsolapp för att hantera och se sina utgifter
 
-Service-klass för hantering av uppgifter och spara data i en JSON-fil
+Service-klass för hantering av utgifter
  */
 
 using System;
-using System.Text.Json;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
-using ExpenseTracker.Models;    //importerar Expense-klassen
+using ExpenseTracker.Models;
 
 namespace ExpenseTracker.Services
 {
@@ -19,30 +18,14 @@ namespace ExpenseTracker.Services
     //serivce-klass som hanterar utgifter
     public class ExpenseService
     {
-        private readonly string filePath = @"expenses.json"; //filväg där utgifter sparas i JSON-format
 
         private readonly List<Expense> expenses;    //listan med utgifter
+        private readonly ExpenseStorage storageService;
 
         public ExpenseService()
         {
-            if (File.Exists(filePath) == true)  //om JSON-filen finns läses existerande inlägg in
-            {
-                string jsonString = File.ReadAllText(filePath);     //läser in JSON-strängen ur filen
-
-                //kontrollerar om filen är tom innan deserialisering av JSON-strängen
-                if (!string.IsNullOrWhiteSpace(jsonString))
-                {
-                    expenses = JsonSerializer.Deserialize<List<Expense>>(jsonString) ?? [];    //deserialiserar JSON-strängen
-                }
-                else
-                {
-                    expenses = [];  //tom lista är påbörjas om filen tom
-                }
-            }
-            else
-            {
-                expenses = [];  //finns inte någon fil initieras en tom lista
-            }
+            storageService = new ExpenseStorage();      //skapar instans av ExpenseStorage-klassen
+            expenses = storageService.GetExpenses();     //hämtar utgifter från JSON-filen genom ExpenseStorage-klassen
         }
 
         //lägger till en ny utgift med hjälp av objektet i Expense-klassen
@@ -50,7 +33,7 @@ namespace ExpenseTracker.Services
         {
 
             expenses.Add(expense);  //lägger till utgift i listan
-            SaveToFile();   //sparar utgift i JSON-filen
+            storageService.SaveExpenses(expenses);   //sparar utgift i JSON-filen
         }
 
         //hämtar alla utgifter
@@ -75,7 +58,7 @@ namespace ExpenseTracker.Services
             if (index >= 0 && index < expenses.Count)   //kontrollerar att index är giltigt
             {
                 expenses[index] = updatedExpense;
-                SaveToFile();   //sparar utgift i JSON-filen
+                storageService.SaveExpenses(expenses);   //sparar utgift i JSON-filen
                 return true;
             }
             return false;
@@ -87,17 +70,10 @@ namespace ExpenseTracker.Services
             if (index >= 0 && index < expenses.Count)   //kontrollerar att index är giltigt
             {
                 expenses.RemoveAt(index);
-                SaveToFile(); //sparar utgift i JSON-filen
+                storageService.SaveExpenses(expenses); //sparar utgift i JSON-filen
                 return true;
             }
             return false;
-        }
-
-        //sparar lista med utgifter till JSON-fil
-        private void SaveToFile()
-        {
-            var jsonString = JsonSerializer.Serialize(expenses);   //serialiserar listan med utgifter till en JSON-sträng
-            File.WriteAllText(filePath, jsonString);    //skriver JSON-strängen till filen
         }
     }
 }
