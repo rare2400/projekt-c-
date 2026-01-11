@@ -5,13 +5,16 @@ utvecklad med programmeringspråket **C#** och ramverket **.NET**. Den data man 
 i en JSON-fil. Man kan även ändra och ta bort data i applikationen, samt se alla sina sparade 
 utgifter med en uträknat totalsumma.
 
+## Länk till videopresentation
+[https://youtu.be/Bj7nmhe-uBo](https://youtu.be/Bj7nmhe-uBo)
+
 ## Verktyg
 - C#
 - .NET
 
 ## Struktur
 - Models - Expense.cs
-- Services - ExpenseTracker.cs
+- Services - ExpenseService.cs och ExpenseStorage
 - Program.cs
 
 ### Expense-klassen - en utgifts struktur
